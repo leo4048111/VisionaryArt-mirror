@@ -10,15 +10,14 @@
 + 用户能够使用软件系统提供的相关社交功能，与其他用户进行交流
 
 ### 核心技术栈
-
-• 主要开发语言：Python
-• HTTP 服务器：Tornado + FastAPI
-• 前端技术选型：Vue.js + Element UI/HTML + CSS + Js/Gradio
-• 持久层框架：SQLAlchemy
-• 数据库服务：MySQL + Redis
-• 版本管理工具：Git
-• 远程代码托管平台：华为云
-• 接口管理与自动化测试工具：Apifox + Mock.js
++ 主要开发语言：Python
++ HTTP 服务器：Tornado + FastAPI
++ 前端技术选型：Vue.js + Element UI/HTML + CSS + Js/Gradio
++ 持久层框架：SQLAlchemy
++ 数据库服务：MySQL + Redis
++ 版本管理工具：Git
++ 远程代码托管平台：华为云
++ 接口管理与自动化测试工具：Apifox + Mock.js
 
 ### 软件系统功能
 
