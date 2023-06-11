@@ -1,0 +1,37 @@
+html,
+body,
+section {
+    height: 100vh;
+}
+
+.container {
+    padding-bottom: 50px;
+}
+
+.full-height {
+    height: 80vh;
+}
+
+#markdown {
+    font-family: monospace;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: auto;
+    box-shadow: 1px 1px 10px #333;
+    padding: 25px 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#htmlArea {
+    background: #fff;
+    overflow: auto;
+    box-shadow: 1px 1px 10px #333;
+    padding: 1px 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+    position: absolute;
+    z-index: -1;
+}

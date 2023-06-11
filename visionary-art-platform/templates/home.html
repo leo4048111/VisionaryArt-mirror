@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VisionaryArt Homepage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="/static/css/home.css">
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+  <div class="app-container">
+    <div class="left-area">
+      <input type="file" accept="image/*" style="display: none;" id="user-avatar-uploader"
+        v-on:change="onUploadAvatarChange" />
+      <div class="user-avatar" v-on:click="onClickUserAvatar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24px"
+          style="position:absolute; z-index: 1; left:50%; top:2.7em; transform: translateX(-50%);"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M246.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 109.3V320c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 53 43 96 96 96H352c53 0 96-43 96-96V352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V352z" />
+        </svg>
+        <img class="user-avatar-image" :src="user_avatar" alt="">
+      </div>
+      <div class="app-name">DashBoard</div>
+      <a href="#" class="item-link" id="pageLink" :class="{'active': left_nav_isActive[0]}"
+        v-on:click="main_frame_navigate_to(0, '/templates/home/browse.html')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2"
+          viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M128 136c0-22.1-17.9-40-40-40L40 96C17.9 96 0 113.9 0 136l0 48c0 22.1 17.9 40 40 40H88c22.1 0 40-17.9 40-40l0-48zm0 192c0-22.1-17.9-40-40-40H40c-22.1 0-40 17.9-40 40l0 48c0 22.1 17.9 40 40 40H88c22.1 0 40-17.9 40-40V328zm32-192v48c0 22.1 17.9 40 40 40h48c22.1 0 40-17.9 40-40V136c0-22.1-17.9-40-40-40l-48 0c-22.1 0-40 17.9-40 40zM288 328c0-22.1-17.9-40-40-40H200c-22.1 0-40 17.9-40 40l0 48c0 22.1 17.9 40 40 40h48c22.1 0 40-17.9 40-40V328zm32-192v48c0 22.1 17.9 40 40 40h48c22.1 0 40-17.9 40-40V136c0-22.1-17.9-40-40-40l-48 0c-22.1 0-40 17.9-40 40zM448 328c0-22.1-17.9-40-40-40H360c-22.1 0-40 17.9-40 40v48c0 22.1 17.9 40 40 40h48c22.1 0 40-17.9 40-40V328z" />
+        </svg>
+      </a>
+      <a href="#" class="item-link" id="pageLink" :class="{'active': left_nav_isActive[1]}"
+        v-on:click="main_frame_navigate_to(1, '/templates/home/gallery.html')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2"
+          viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M160 32c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H160zM396 138.7l96 144c4.9 7.4 5.4 16.8 1.2 24.6S480.9 320 472 320H328 280 200c-9.2 0-17.6-5.3-21.6-13.6s-2.9-18.2 2.9-25.4l64-80c4.6-5.7 11.4-9 18.7-9s14.2 3.3 18.7 9l17.3 21.6 56-84C360.5 132 368 128 376 128s15.5 4 20 10.7zM192 128a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM48 120c0-13.3-10.7-24-24-24S0 106.7 0 120V344c0 75.1 60.9 136 136 136H456c13.3 0 24-10.7 24-24s-10.7-24-24-24H136c-48.6 0-88-39.4-88-88V120z" />
+        </svg>
+      </a>
+      <a href="#" class="item-link" id="pageLink" :class="{'active': left_nav_isActive[2]}"
+        v-on:click="main_frame_navigate_to(2, '/templates/home/upload.html')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2"
+          viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M288 109.3V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V109.3l-73.4 73.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3zM64 352H192c0 35.3 28.7 64 64 64s64-28.7 64-64H448c35.3 0 64 28.7 64 64v32c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V416c0-35.3 28.7-64 64-64zM432 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z" />
+        </svg>
+      </a>
+      <a href="#" class="item-link" id="pageLink" :class="{'active': left_nav_isActive[3]}"
+        v-on:click="main_frame_navigate_to(3, '/templates/home/search.html')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2"
+          viewBox="0 0 460 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M220.6 130.3l-67.2 28.2V43.2L98.7 233.5l54.7-24.2v130.3l67.2-209.3zm-83.2-96.7l-1.3 4.7-15.2 52.9C80.6 106.7 52 145.8 52 191.5c0 52.3 34.3 95.9 83.4 105.5v53.6C57.5 340.1 0 272.4 0 191.6c0-80.5 59.8-147.2 137.4-158zm311.4 447.2c-11.2 11.2-23.1 12.3-28.6 10.5-5.4-1.8-27.1-19.9-60.4-44.4-33.3-24.6-33.6-35.7-43-56.7-9.4-20.9-30.4-42.6-57.5-52.4l-9.7-14.7c-24.7 16.9-53 26.9-81.3 28.7l2.1-6.6 15.9-49.5c46.5-11.9 80.9-54 80.9-104.2 0-54.5-38.4-102.1-96-107.1V32.3C254.4 37.4 320 106.8 320 191.6c0 33.6-11.2 64.7-29 90.4l14.6 9.6c9.8 27.1 31.5 48 52.4 57.4s32.2 9.7 56.8 43c24.6 33.2 42.7 54.9 44.5 60.3s.7 17.3-10.5 28.5zm-9.9-17.9c0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8 8-3.6 8-8z" />
+        </svg>
+      </a>
+      <a href="#" class="item-link" id="pageLink" :class="{'active': left_nav_isActive[4]}"
+        v-on:click="navigateToAiService()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2"
+          viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M512 256c0 .9 0 1.8 0 2.7c-.4 36.5-33.6 61.3-70.1 61.3H344c-26.5 0-48 21.5-48 48c0 3.4 .4 6.7 1 9.9c2.1 10.2 6.5 20 10.8 29.9c6.1 13.8 12.1 27.5 12.1 42c0 31.8-21.6 60.7-53.4 62c-3.5 .1-7 .2-10.6 .2C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+        </svg>
+      </a>
+      <a href="#" class="item-link" id="pageLink" :class="{'active': left_nav_isActive[5]}"
+        v-on:click="main_frame_navigate_to(5, '/templates/home/feedback.html')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2"
+          viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M0 64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L185.6 508.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V416H64c-35.3 0-64-28.7-64-64V64zm340.8 59c-14.7-14.7-38.6-14.7-53.3 0L272.6 138l53.3 53.3 14.9-14.9c14.7-14.7 14.7-38.6 0-53.3zM178.1 232.5c-4.1 4.1-7 9.2-8.4 14.9L160.5 284c-1.4 5.5 .2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l36.6-9.2c5.6-1.4 10.8-4.3 14.9-8.4l71.9-71.9L250 160.6l-71.9 71.9z" />
+        </svg>
+      </a>
+      <button class="btn-logout" v-on:click="logout">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-log-out"
+          viewBox="0 0 24 24">
+          <defs />
+          <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" />
+        </svg>
+      </button>
+    </div>
+    <div class="main-area">
+      <iframe class="main-area-frame" id="main-frame" :src="main_area_frame_src" frameborder="0" scrolling="auto" height="100%"
+        width="100%"></iframe>
+    </div>
+    <div class="right-area">
+      <button class="btn-close-right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x-circle"
+          viewBox="0 0 24 24">
+          <defs />
+          <circle cx="12" cy="12" r="10" />
+          <path d="M15 9l-6 6M9 9l6 6" />
+        </svg>
+      </button>
+      <div class="right-area-header-wrapper">
+        <p class="right-area-header">Uploads</p>
+        <button class="more-action"></button>
+      </div>
+      <div class="download-item-line">
+        <div class="line-header">Today</div>
+        <div class="download-area" v-for="task in upload_tasks">
+          <div class="download-item-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="">
+              <defs></defs>
+              <circle cx="256" cy="256" r="256" fill="#4b50dd"></circle>
+              <path fill="#f5f5f5" d="M192 64h176c4.4 0 8 3.6 8 8v328c0 4.4-3.6 8-8 8H120c-4.4 0-8-3.6-8-8V148l80-84z">
+              </path>
+              <path fill="#e6e6e6" d="M184 148c4.4 0 8-3.6 8-8V64l-80 84h72z"></path>
+              <circle cx="352" cy="384" r="52" fill="#2179a6"></circle>
+              <g fill="#f5f5f5" class="g">
+                <path d="M352 416c-2.208 0-4-1.788-4-4v-56c0-2.212 1.792-4 4-4s4 1.788 4 4v56c0 2.212-1.792 4-4 4z">
+                </path>
+                <path
+                  d="M352 416a3.989 3.989 0 01-2.828-1.172l-20-20c-1.564-1.564-1.564-4.092 0-5.656s4.092-1.564 5.656 0L352 406.344l17.172-17.172c1.564-1.564 4.092-1.564 5.656 0s1.564 4.092 0 5.656l-20 20A3.989 3.989 0 01352 416z">
+                </path>
+              </g>
+            </svg>
+          </div>
+          <div class="download-item-texts">
+            <p class="download-text-header">{{task.params.modelname}}</p>
+            <p class="download-text-info">{{Math.round(task.params.size / 1024.0
+              / 1024.0)}} MB<span>{{task.progress}}% / 100.0%</span></p>
+          </div>
+          <div class="download-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+              v-if="task.progress < 100"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM385 231c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-71-71V376c0 13.3-10.7 24-24 24s-24-10.7-24-24V193.9l-71 71c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L239 119c9.4-9.4 24.6-9.4 33.9 0L385 231z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+              v-if="task.progress >= 100"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- partial -->
+  <script src="/static/js/deps/axios.min.js"></script>
+  <script src="/static/js/deps/vue.global.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script type="module" src="/static/js/home.js"></script>
+
+</body>
+
+</html>

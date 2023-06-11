@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <link href='/static/css/Satisfy.css' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/static/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+    <link rel="stylesheet" href="/static/css/home/gallery.css">
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container">
+        <h1>Visionary Art Gallery</h1>
+        <h1 style="transform: scale(0.3);">Where Imagination Meets Innovation</h1>
+        <hr>
+        <div id="gallery" class="container-fluid" v-on:scroll="onScroll">
+            <img :src="imageInfo.path" class="img-responsive" v-on:click="onClickImage(imageInfo)" v-for="imageInfo in imageInfos">
+        </div>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-info">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+    <script src="/static/js/deps/axios.min.js"></script>
+    <script src="/static/js/deps/vue.global.js"></script>
+    <script src='/static/js/deps/jquery.min.js'></script>
+    <script src='/static/js/deps/bootstrap.min.js'></script>
+    <script type="module" src="/static/js/home/gallery.js"></script>
+
+</body>
+
+</html>

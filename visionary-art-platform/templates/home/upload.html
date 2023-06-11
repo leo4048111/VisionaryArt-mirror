@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>File Upload</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'>
+  <link rel='stylesheet' href='/static/css/quill.snow.css'>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Varela+Round" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/home/upload.css">
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="container">
+    <form class="upload-form" v-if="!hasSubmitted">
+      <div class="form-row">
+        <div class="form-row-item">
+          <h1>Create your model</h1>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-row-item" style="font-weight: 1000;">
+          Model Name<span id="required-marker">*</span><br />
+          <input class="form-input" required type="text"
+            placeholder="Please upload a valid model file, name will be parsed automatically"
+            v-model="model_info.modelname" readonly>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-row-item" style="font-weight: 1000;">
+          Type<span id="required-marker">*</span><br />
+          <div class="form-dropdown">
+            <select id="type-selector" v-model="model_info.type">
+              <option value="Checkpoint">Checkpoint</option>
+              <!-- <option value="LoRA">LoRA</option> -->
+            </select>
+          </div>
+        </div>
+        <div class="form-row-item" style="font-weight: 1000;">
+          Version<span id="required-marker">*</span><br />
+          <input class="form-input" required type="text" placeholder="" v-model="model_info.version" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-row-item" style="font-weight: 1000;">
+          About your model<span id="required-marker">*</span><br />
+          <div id="editor-container">
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-row-item" style="font-weight: 1000;">
+          Upload a file<span id="required-marker">*</span>
+          <div class="uploader-wrapper">
+            <div class="upload-container" id="upload-container"
+              v-on="{dragenter:onDragEnter, dragover:onDragOver, drop:onDropModelFile}">
+              <div class="border-container">
+                <div class="icons fa-4x">
+                  <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
+                  <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
+                  <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
+                </div>
+                <ul style="margin:auto" v-if="cachedFile != null">
+                  <li style="float:left;width:60%;text-align:left">{{cachedFile.name}}</li>
+                  <li style="float:left;list-style:none;width:20%;text-align:left">{{Math.round(cachedFile.size / 1024.0
+                    / 1024.0)}} MB</li>
+                  <li style="float:left;list-style:none;width:10%;text-align:left; cursor: pointer;">
+                  </li>
+                  <li style="float:left;list-style:none;width:10%;text-align:left">
+                    <div class="loading" v-if="isUploading">Loading&#8230;</div>
+                    <div class="success" v-if="isSuccess">Success</div>
+                    <div class="failed" v-if="isFailed">Failed</div>
+                    <div class="pending" v-if="isPending">Pending</div>
+                  </li>
+                </ul>
+                <input type="file" accept=".safetensors,.ckpt" class="file-upload" id="model-file-upload"
+                  v-on:change="onModelFileUploadChange" />
+                <div class="text-wrapper" style="width: 100%; display: block; align-items: center;">
+                  <p style="margin: 0 auto; width:500px; color:red; margin-bottom: 2em; margin-top: 2em;"
+                    v-if="message != null">{{message}}</p>
+                  <p style="margin: 0 auto; width:500px;">Drag and drop files here, or
+                    <a href="#" id="file-browser" v-on:click="onClickModelFileBrowser">browse</a> your computer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-row-item" style="font-weight: 1000;">
+          Upload a cover image<span id="required-marker">*</span>
+          <input type="file" accept="image/*" class="file-upload" id="cover-image-upload"
+            v-on:change="onCoverImageUploadChange" />
+          <div class="cover-image-container">
+            <div class="cover-image-uploader" v-on="{click:onClickCoverImageBrowser}">
+              <div class="cover-image-uploader-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                  width="5em"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z" />
+                </svg>
+              </div>
+
+              <div class="cover-image-uploader-discription">
+                <h1>Drag images here or click to select files</h1>
+              </div>
+            </div>
+            <div class="cover-image-preview">
+              <image id="cover-image"></image>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <a style="width: 100%; height:2em; cursor: pointer; background-color: white; border: 2px solid black; border-radius: 10px; text-align: center; font-weight: 1000;"
+          v-on:click="uploadModel">Submit</a>
+      </div>
+    </form>
+    <h1 style="font-weight: 1000; text-align: center;" v-if="hasSubmitted">Your model is uploading...
+    </h1>
+  </div>
+  <!-- partial -->
+  <script src='https://use.fontawesome.com/releases/v5.0.10/js/all.js'></script>
+  <script src='/static/js/deps/quill.js'></script>
+  <script src="/static/js/deps/axios.min.js"></script>
+  <script src="/static/js/deps/vue.global.js"></script>
+  <script type="module" src="/static/js/home/upload.js"></script>
+
+</body>
+
+</html>

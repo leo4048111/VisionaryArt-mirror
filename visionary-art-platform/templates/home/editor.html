@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editor</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/yeti/bootstrap.min.css'>
+    <link rel="stylesheet" href="/static/css/home/editor.css" >
+</head>
+
+<body>
+    <div class="container" style="background-color: white; position:fixed; width: 1920px; height: 1920px; 
+    top: 0%; left: 0%; text-align:right;">
+        <div class="row">
+            <div class="col-sm-6">
+                <textarea type="text" v-model="value" v-on:change="onchange" v-on:input="onchange" id="markdown"
+                    class="col-xs-10 col-xs-offset-1 full-height"></textarea>
+            </div>
+
+            <div class="col-sm-6">
+                <div id="htmlArea" class="col-xs-10 col-xs-offset-1 full-height"></div>
+                <div v-html="renderedHtml"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/deps/vue.global.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.3.0/showdown.min.js'></script>
+    <script src="/static/js/home/editor.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'>
+    <link rel='stylesheet' href='/static/css/quill.snow.css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/home/feedback.css">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container">
+        <form class="upload-form" v-if="!hasSubmitted">
+            <div class="form-row">
+                <div class="form-row-item">
+                    <h1>Feedback & Issues</h1>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-item" style="font-weight: 1000;">
+                    Title<span id="required-marker">*</span><br />
+                    <input class="form-input" required type="text"
+                        placeholder="Write anything you want to tell us here." v-model="feedback_info.title">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-item" style="font-weight: 1000;">
+                    Tag<span id="required-marker">*</span><br />
+                    <div class="form-dropdown">
+                        <select id="type-selector" v-model="feedback_info.tag">
+                            <option value="Bug report">Bug report</option>
+                            <option value="Feature request">Feature request</option>
+                            <option value="Chat">Chat</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row-item" style="font-weight: 1000;">
+                    Contact<span id="required-marker">*</span><br />
+                    <input class="form-input" required type="text"
+                        placeholder="Leave your name, wechat, qq or e-mail so that we can reach you for follow-up questions."
+                        v-model="feedback_info.contact" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row-item" style="font-weight: 1000;">
+                    Tell us more details<span id="required-marker">*</span><br />
+                    <div id="editor-container">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <a style="width: 100%; height:2em; cursor: pointer; background-color: white; border: 2px solid black; border-radius: 10px; text-align: center; font-weight: 1000;"
+                    v-on:click="sendFeedback">Submit</a>
+            </div>
+        </form>
+
+        <h1 style="font-weight: 1000; text-align: center;" v-if="hasSubmitted">We have received your feedback and will
+            look into it, thank you!
+        </h1>
+    </div>
+    <!-- partial -->
+    <script src='https://use.fontawesome.com/releases/v5.0.10/js/all.js'></script>
+    <script src='/static/js/deps/quill.js'></script>
+    <script src="/static/js/deps/axios.min.js"></script>
+    <script src="/static/js/deps/vue.global.js"></script>
+    <script type="module" src="/static/js/home/feedback.js"></script>
+
+</body>
+
+</html>
