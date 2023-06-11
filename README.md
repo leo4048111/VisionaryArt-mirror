@@ -303,7 +303,7 @@ sh kill_services.sh
 **⑤验证软件系统：上述部署流程全部完成后，您应该可以通过浏览器访问服务器的80端口，来访问软件系统的AI画图服务功能。同样地，您应该能够通过浏览器访问服务器的7650端口，来访问软件系统的后台管理界面。如果您在部署过程中遇到任何问题，请及时联系开发人员**
 
 ### License
-```Copyright (c) 2018-2023 Visionary art```
+```Copyright (c) 2018-2023 leo4048111```
 
 This project is licensed under the AGPL-3.0 license - see the LICENSE file for details.
 
