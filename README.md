@@ -292,7 +292,7 @@ sh kill_services.sh
    mkdir data
    ```
 
-   **这里您如果照抄上面的命令，则是把redis配置文件放在了/home/redis/myredis下，并且从https://github.com/leo4048111/my_redis_config/blob/main/redis.conf上面下载了我们小组开发时所用的redis配置，包括redis用户名密码等重要配置，建议您不要改密码，否则同样地需要到项目源码内修改Redis配置**
+   **这里您如果照抄上面的命令，则是把redis配置文件放在了/home/redis/myredis下，并且从`https://github.com/leo4048111/my_redis_config/blob/main/redis.conf`上面下载了我们小组开发时所用的redis配置，包括redis用户名密码等重要配置，建议您不要改密码，否则同样地需要到项目源码内修改Redis配置**
 
 3. **启动redis容器：**
 
