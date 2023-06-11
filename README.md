@@ -306,3 +306,5 @@ sh kill_services.sh
 
 This project is licensed under the AGPL-3.0 license - see the LICENSE file for details.
 
+### Credits
++ https://github.com/AUTOMATIC1111/stable-diffusion-webui
